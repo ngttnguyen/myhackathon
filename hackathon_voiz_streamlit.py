@@ -10,8 +10,7 @@ from datetime import date
 from datetime import time
 import datetime as dt
 import base64 
-import plotly.express as px
-from matplotlib import pyplot as plt
+
 
 
 # Initial setup
