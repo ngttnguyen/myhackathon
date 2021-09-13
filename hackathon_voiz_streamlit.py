@@ -9,7 +9,7 @@ import numpy as np
 from datetime import date
 from datetime import time
 import datetime as dt
-import base64 
+# import base64 
 
 # Initial setup
 st.set_page_config(layout="wide")
@@ -97,8 +97,9 @@ def recommend_forFreeUser():
         
 def get_table_download_link_csv(df):
     csv = df.to_csv().encode()
-    b64 = base64.b64encode(csv).decode()
-    href = f'<a href="data:file/csv;base64,{b64}" download="recommendPlaylist.csv" target="_blank">Download csv file</a>'
+    # b64 = base64.b64encode(csv).decode()
+    # href = f'<a href="data:file/csv;base64,{b64}" download="recommendPlaylist.csv" target="_blank">Download csv file</a>'
+    href = f'<a href="data:file/csv" download="recommendPlaylist.csv" target="_blank">Download csv file</a>'
     return href
         
     
