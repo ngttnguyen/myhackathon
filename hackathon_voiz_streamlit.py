@@ -11,8 +11,6 @@ from datetime import time
 import datetime as dt
 import base64 
 
-
-
 # Initial setup
 st.set_page_config(layout="wide")
 
