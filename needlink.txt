@@ -1,0 +1,12 @@
+1. Streamlit:
+https://github.com/daniellewisDL/streamlit-cheat-sheet/blob/master/streamlit-cheat-sheet.png
+https://www.youtube.com/watch?v=JwSS70SZdyM
+
+2. Basket Analysis
+https://towardsdatascience.com/affinity-analysis-market-basket-analysis-c8e7fcc61a21
+refer:
+a. https://rstudio-pubs-static.s3.amazonaws.com/258268_6ef35268edc54e0c87d1546983d8a007.html
+b. https://github.com/ddpham/Frequent-Pattern-Mining-Basics
+
+3. Customer journey
+https://www.woopra.com/learn/customer-journey-analytics
