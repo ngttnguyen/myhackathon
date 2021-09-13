@@ -14,9 +14,9 @@ import datetime as dt
 st.set_page_config(layout="wide")
 
 # Load data
-basket_df = pd.read_excel("streamlit_data/basket_output.xlsx")
+basket_df = pd.read_csv("streamlit_data/basket_output.csv")
 listen_free_user_df = pd.read_csv("streamlit_data/listen_free_user_df.csv")
-hv_convert_content_df = pd.read_excel("streamlit_data/hv_convert_content.xlsx")
+hv_convert_content_df = pd.read_csv("streamlit_data/hv_convert_content.csv")
 listen_free_user_df["Listening Date"]=listen_free_user_df["Listening Date"].astype("datetime64[ns]")
 
 ## Function suggest together_playlists base on basket analysis
