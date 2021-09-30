@@ -9,12 +9,14 @@ import numpy as np
 from datetime import date
 from datetime import time
 import datetime as dt
+import base64
+import io
 
 # Initial setup
 st.set_page_config(layout="wide")
 
 # Load data
-basket_df = pd.read_csv("streamlit_data/basket_output.csv")
+basket_df = pd.read_excel("streamlit_data/basket_output_streamlit.xlsx")
 listen_free_user_df = pd.read_csv("streamlit_data/listen_free_user_df.csv")
 hv_convert_content_df = pd.read_csv("streamlit_data/hv_convert_content.csv")
 listen_free_user_df["Listening Date"]=listen_free_user_df["Listening Date"].astype("datetime64[ns]")
@@ -74,7 +76,7 @@ def recommend_forFreeUser():
         
     ## Slider
     max_val = clusters[clusters.MainCluster_Description == cluster]["#"].tolist()[0]
-    user_num = st.sidebar.slider("Number of users for recommending:", min_value= 0, max_value= max_val, value=int(max_val/2), step=int(max_val/50))
+    user_num = st.sidebar.number_input("Number of users for recommending:", min_value= 0, max_value= max_val, value=int(max_val/2), step=int(max_val/50))
     ## Get list users
     users_lst = listen_free_user_df[listen_free_user_df["MainCluster_Description"]==cluster]["UserID (FK)"].unique().tolist()
     users_lst = users_lst[:user_num]
@@ -95,11 +97,14 @@ def recommend_forFreeUser():
 
         
 def get_table_download_link_csv(df):
-    csv = df.to_csv().encode()
-    # b64 = base64.b64encode(csv).decode()
-    # href = f'<a href="data:file/csv;base64,{b64}" download="recommendPlaylist.csv" target="_blank">Download csv file</a>'
-    href = f'<a href="data:file/csv" download="recommendPlaylist.csv" target="_blank">Download csv file</a>'
-    return href
+
+    towrite = io.BytesIO()
+    downloaded_file = df.to_excel(towrite, encoding='utf-8', index=False, header=True)
+    towrite.seek(0)  # reset pointer
+
+    b64 = base64.b64encode(towrite.read()).decode()  # some strings
+    linko= f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="recommendlists.xlsx">Download excel file</a>'
+    return linko
         
     
 def main():
