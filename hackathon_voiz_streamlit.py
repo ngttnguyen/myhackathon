@@ -95,15 +95,22 @@ def recommend_forFreeUser():
         st.table(data=recomemend_df.iloc[:20])
         st.markdown(get_table_download_link_csv(recomemend_df), unsafe_allow_html=True)
 
-        
+
 def get_table_download_link_csv(df):
 
+    # csv = df.to_csv().encode("utf-8")
+    # b64 = base64.b64encode(csv).decode()
+    # linko = f'<a href="data:file/csv;base64,{b64}" download="recommendPlaylist.csv" target="_blank">Download csv file</a>'
+
+   
     towrite = io.BytesIO()
-    downloaded_file = df.to_excel(towrite, encoding='utf-8', index=False, header=True)
+    # downloaded_file = df.to_excel( towrite, encoding='utf-8', index=False, header=True,engine = 'openpyxl')
+    downloaded_file = df.to_excel( towrite, encoding='utf-8', index=False, header=True)
     towrite.seek(0)  # reset pointer
 
     b64 = base64.b64encode(towrite.read()).decode()  # some strings
     linko= f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="recommendlists.xlsx">Download excel file</a>'
+  
     return linko
         
     
