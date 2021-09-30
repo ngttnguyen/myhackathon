@@ -116,7 +116,7 @@ def get_table_download_link_csv(df):
     
 def main():
     
-    st.title('Voiz: Recommendation Playlist for Free Users')
+    st.title('VoizFM: Recommendation Playlists for Free Users')
     recommend_forFreeUser()
     
 
